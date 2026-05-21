@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import AppImage from '@/components/ui/AppImage';
 
 interface TechBadge {
   label: string;
@@ -14,9 +15,7 @@ interface Experience {
   role: string;
   period: string;
   description: string;
-  logoText: string;
-  logoColor: string;
-  logoBg: string;
+  logoImage: string;
   techs: TechBadge[];
 }
 
@@ -27,9 +26,7 @@ const experiences: Experience[] = [
     period: 'Feb 2026 — Current',
     description:
       'Lead the IT & Multimedia department, overseeing official website development, multimedia production pipelines, and a student-driven "Video Edit by Request" system.',
-    logoText: 'PPI',
-    logoColor: '#1D4ED8',
-    logoBg: '#EFF6FF',
+    logoImage: '/image-portfolio/ppi.png',
     techs: [
       { label: 'Nx', color: '#000', bg: '#F5F5F5' },
       { label: 'Ts', color: '#3178C6', bg: '#EBF2FB' },
@@ -42,9 +39,7 @@ const experiences: Experience[] = [
     period: 'Sep 2019 — Current',
     description:
       'Delivered 160+ custom design projects, directed Esports content creation, and served as Project Manager for the "Mental Note" mental-health journaling app.',
-    logoText: 'Pn',
-    logoColor: '#059669',
-    logoBg: '#ECFDF5',
+    logoImage: '/image-portfolio/pine.png',
     techs: [
       { label: 'Fi', color: '#F24E1E', bg: '#FEF0EC' },
       { label: 'Ai', color: '#FF9A00', bg: '#FFF8EC' },
@@ -57,9 +52,7 @@ const experiences: Experience[] = [
     period: 'Aug 2021 — Mar 2023',
     description:
       'Mentored 40+ members in programming fundamentals, designed a biometric Heartbeat Detector, and developed an automated IoT Rain Detection System for campus use.',
-    logoText: 'GCC',
-    logoColor: '#16A34A',
-    logoBg: '#F0FDF4',
+    logoImage: '/image-portfolio/gcc.png',
     techs: [
       { label: 'C+', color: '#00599C', bg: '#EBF4FB' },
       { label: 'Py', color: '#3776AB', bg: '#EBF5FB' },
@@ -130,18 +123,14 @@ export default function ExperienceSection() {
               </div>
 
               {/* Right: Org Logo */}
-              <div
-                className="flex-shrink-0 flex items-center justify-center rounded-lg font-bold text-sm"
-                style={{
-                  width: 48,
-                  height: 48,
-                  background: exp.logoBg,
-                  color: exp.logoColor,
-                  fontSize: '0.65rem',
-                  letterSpacing: '0.02em',
-                }}
-              >
-                {exp.logoText}
+              <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-gray-50 dark:bg-neutral-800 overflow-hidden flex items-center justify-center">
+                <AppImage
+                  src={exp.logoImage}
+                  alt={`${exp.org} logo`}
+                  width={48}
+                  height={48}
+                  className="w-12 h-12 object-contain"
+                />
               </div>
             </div>
           </motion.div>
