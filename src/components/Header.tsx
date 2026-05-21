@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import AppLogo from '@/components/ui/AppLogo';
 
@@ -40,7 +40,6 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [shineActive, setShineActive] = useState(false);
-  const avatarRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const stored = localStorage.getItem('theme');
@@ -52,7 +51,7 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 60);
+      setScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -71,20 +70,20 @@ export default function Header() {
   };
 
   return (
-    <div className="sticky top-0 z-50 flex justify-center pt-4 pb-2 pointer-events-none">
+    <div className="flex justify-center pt-4 pb-2 pointer-events-none">
       {/* Transparent top nav (default state) */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {!scrolled && (
           <motion.header
             key="top-nav"
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, y: -10, transition: { duration: 0.2 } }}
             transition={{ duration: 0.3 }}
             className="pointer-events-auto w-full max-w-5xl px-6 flex items-center justify-between"
           >
             {/* Avatar with shine effect */}
             <div
-              ref={avatarRef}
               className="relative cursor-pointer overflow-hidden rounded-full"
               style={{ width: 36, height: 36 }}
               onMouseEnter={() => setShineActive(true)}

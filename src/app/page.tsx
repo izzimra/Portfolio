@@ -20,8 +20,8 @@ export default function HomePage() {
       {/* Dark mode gutter pattern override */}
       <style>{`.dark #page-root {background-image: repeating-linear-gradient(-45deg,transparent,transparent 4px,rgba(255,255,255,0.028) 4px,rgba(255,255,255,0.028) 5px) !important;}`}</style>
 
-      {/* Header sits outside the white content column so it spans full width */}
-      <div className="relative z-50">
+      {/* Header sits outside the white content column — sticky so it stays on top */}
+      <div className="sticky top-0 z-50">
         <div className="max-w-5xl mx-auto px-6">
           <Header />
         </div>
