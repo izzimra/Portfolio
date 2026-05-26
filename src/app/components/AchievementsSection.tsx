@@ -15,6 +15,16 @@ interface YearGroup {
 
 const timeline: YearGroup[] = [
   {
+    year: '2026',
+    items: [
+      {
+        title: '3rd Place — FTSM Generative AI Vibe Hackathon',
+        description:
+          'Built "Rovr", an AI-powered field sales intelligence dashboard for Hilti Asia IT Services. Developed a smart prioritization engine and Mapbox route optimization with a Gemini-powered copilot. Built alongside Arnav Kapoor and Attarasya Adya Jomantara using Next.js 15, Gemini 2.5 Flash, Supabase, and AWS via Kiro IDE.',
+      },
+    ],
+  },
+  {
     year: '2025',
     items: [
       {
