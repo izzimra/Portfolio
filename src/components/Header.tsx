@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, type Transition } from 'framer-motion';
 import AppLogo from '@/components/ui/AppLogo';
 
 const navLinks = [
@@ -10,6 +10,16 @@ const navLinks = [
   { label: 'Experience', href: '#experience' },
   { label: 'Contact', href: '#contact' },
 ];
+
+// One shared spring drives every layout morph so the container, nav links,
+// avatar, dividers, and toggle all reach their new positions at the same time.
+// This is what kills the "late text" lag — children share the parent's tempo.
+const LAYOUT_SPRING: Transition = {
+  type: 'spring',
+  stiffness: 300,
+  damping: 30,
+  mass: 0.9,
+};
 
 function SunIcon() {
   return (
@@ -97,25 +107,20 @@ export default function Header() {
           layout
           initial={false}
           animate={containerAnimate}
-          transition={{
-            layout: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
-            backgroundColor: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
-            borderColor: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
-            boxShadow: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
-            borderRadius: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
-          }}
+          transition={LAYOUT_SPRING}
           className={`pointer-events-auto flex items-center border ${
-            scrolled ? 'gap-3 px-4 py-2' : 'w-full justify-between gap-3 px-2 py-2'
+            scrolled ? 'gap-4 px-6 py-3' : 'w-full justify-between gap-3 px-2 py-2'
           }`}
           style={{
             backdropFilter: scrolled ? 'blur(20px)' : 'blur(0px)',
             WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'blur(0px)',
-            transition: 'backdrop-filter 0.45s cubic-bezier(0.16, 1, 0.3, 1), -webkit-backdrop-filter 0.45s cubic-bezier(0.16, 1, 0.3, 1)',
+            transition: 'backdrop-filter 0.5s ease-in-out, -webkit-backdrop-filter 0.5s ease-in-out',
           }}
         >
           {/* Avatar — same DOM node in both states, framer auto-animates its position */}
           <motion.div
             layout
+            transition={LAYOUT_SPRING}
             className="relative cursor-pointer overflow-hidden rounded-full flex-shrink-0"
             style={{ width: 32, height: 32 }}
             onMouseEnter={() => setShineActive(true)}
@@ -143,14 +148,15 @@ export default function Header() {
           </motion.div>
 
           {/* Right-side group: stays grouped, framer's layout prop moves it as one cohesive unit */}
-          <motion.div layout className="flex items-center gap-3 md:gap-4">
+          <motion.div layout transition={LAYOUT_SPRING} className="flex items-center gap-3 md:gap-4">
             {/* Divider 1 — collapses to width 0 when not scrolled */}
             <motion.div
+              layout
               animate={{
                 opacity: scrolled ? 1 : 0,
                 width: scrolled ? 1 : 0,
               }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              transition={LAYOUT_SPRING}
               className="h-4 hidden md:block flex-shrink-0"
               style={{
                 background: isDark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.10)',
@@ -158,14 +164,15 @@ export default function Header() {
               aria-hidden
             />
 
-            {/* Nav links */}
-            <nav className="hidden md:flex items-center gap-4 md:gap-5">
+            {/* Nav links — `layout` on each link keeps the text in lock-step with the pill morph */}
+            <motion.nav layout transition={LAYOUT_SPRING} className="hidden md:flex items-center gap-4 md:gap-5">
               {navLinks.map((link) => (
                 <motion.a
                   key={link.label}
                   layout
+                  transition={LAYOUT_SPRING}
                   href={link.href}
-                  className="text-sm font-medium transition-colors"
+                  className="text-sm font-medium transition-colors whitespace-nowrap"
                   style={{
                     color: scrolled
                       ? isDark
@@ -187,15 +194,16 @@ export default function Header() {
                   {link.label}
                 </motion.a>
               ))}
-            </nav>
+            </motion.nav>
 
             {/* Divider 2 — collapses to width 0 when not scrolled */}
             <motion.div
+              layout
               animate={{
                 opacity: scrolled ? 1 : 0,
                 width: scrolled ? 1 : 0,
               }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              transition={LAYOUT_SPRING}
               className="h-4 hidden md:block flex-shrink-0"
               style={{
                 background: isDark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.10)',
@@ -206,6 +214,7 @@ export default function Header() {
             {/* Theme toggle */}
             <motion.button
               layout
+              transition={LAYOUT_SPRING}
               onClick={toggleDark}
               aria-label="Toggle dark mode"
               className="text-muted-foreground hover:text-foreground transition-colors p-1 flex-shrink-0"
@@ -227,6 +236,7 @@ export default function Header() {
             {/* Mobile hamburger */}
             <motion.button
               layout
+              transition={LAYOUT_SPRING}
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle menu"
               className="md:hidden text-foreground p-1 flex-shrink-0"

@@ -9,7 +9,7 @@ interface TechIcon {
   fullName: string;
   color: string;
   bg: string;
-  icon: string;
+  iconImage: string;
 }
 
 interface Project {
@@ -25,48 +25,48 @@ const projects: Project[] = [
     title: 'GoldFlux',
     description:
       'Gold price prediction & market intelligence platform with real-time analytics and ML-powered forecasting.',
-    image: "https://img.rocket.new/generatedImages/rocket_gen_img_1b09aca67-1772313899728.png",
+    image: 'https://img.rocket.new/generatedImages/rocket_gen_img_1b09aca67-1772313899728.png',
     alt: 'Dark financial dashboard showing gold price charts and trading analytics on monitor screen',
     techs: [
-      { label: 'Py', fullName: 'Python', color: '#3776AB', bg: '#EBF5FB', icon: '🐍' },
-      { label: 'Re', fullName: 'React', color: '#61DAFB', bg: '#E8F8FD', icon: '⚛' },
-      { label: 'Fa', fullName: 'FastAPI', color: '#FF6B35', bg: '#FFF0EB', icon: '⚡' },
+      { label: 'Py', fullName: 'Python', color: '#3776AB', bg: '#EBF5FB', iconImage: '/image-portfolio/python.png' },
+      { label: 'Re', fullName: 'React', color: '#61DAFB', bg: '#E8F8FD', iconImage: '/image-portfolio/react.png' },
+      { label: 'Fa', fullName: 'FastAPI', color: '#059669', bg: '#E8F8F3', iconImage: '/image-portfolio/fastapi.png' },
     ],
   },
   {
     title: 'WeLink',
     description:
       'Student-to-student knowledge sharing platform for universities built with Android Jetpack Compose.',
-    image: "https://img.rocket.new/generatedImages/rocket_gen_img_127dc1782-1769201124220.png",
+    image: 'https://img.rocket.new/generatedImages/rocket_gen_img_127dc1782-1769201124220.png',
     alt: 'Students collaborating around laptops in bright university library with natural light',
     techs: [
-      { label: 'Kt', fullName: 'Kotlin', color: '#7F52FF', bg: '#F0EBFF', icon: 'K' },
-      { label: 'An', fullName: 'Android', color: '#3DDC84', bg: '#E8FBF1', icon: '🤖' },
-      { label: 'Fi', fullName: 'Figma', color: '#F24E1E', bg: '#FEF0EC', icon: '🎨' },
+      { label: 'Kt', fullName: 'Kotlin', color: '#7F52FF', bg: '#F0EBFF', iconImage: '/image-portfolio/kotlin.png' },
+      { label: 'An', fullName: 'Android', color: '#3DDC84', bg: '#E8FBF1', iconImage: '/image-portfolio/android.jpg' },
+      { label: 'Fi', fullName: 'Figma', color: '#F24E1E', bg: '#FEF0EC', iconImage: '/image-portfolio/figma.png' },
     ],
   },
   {
     title: 'Rovr',
     description:
       'AI-powered field sales intelligence for B2B reps — real-time CRM insights and conversation coaching.',
-    image: "https://img.rocket.new/generatedImages/rocket_gen_img_12a259989-1766490417832.png",
+    image: 'https://img.rocket.new/generatedImages/rocket_gen_img_12a259989-1766490417832.png',
     alt: 'Dark analytics dashboard with bar charts, KPI metrics, and data visualization on dark background',
     techs: [
-      { label: 'TS', fullName: 'TypeScript', color: '#3178C6', bg: '#EBF2FB', icon: 'TS' },
-      { label: 'Nx', fullName: 'Next.js', color: '#000000', bg: '#F5F5F5', icon: 'N' },
-      { label: 'AI', fullName: 'OpenAI', color: '#10A37F', bg: '#E8F8F3', icon: '🤖' },
+      { label: 'TS', fullName: 'TypeScript', color: '#3178C6', bg: '#EBF2FB', iconImage: '/image-portfolio/ts.png' },
+      { label: 'Nx', fullName: 'Next.js', color: '#000000', bg: '#F5F5F5', iconImage: '/image-portfolio/nextjs.png' },
+      { label: 'Ja', fullName: 'Java', color: '#E76F00', bg: '#FFF3E8', iconImage: '/image-portfolio/java.png' },
     ],
   },
   {
     title: 'Google Homepage',
     description:
       'A pixel-perfect remake of the classic Google homepage with modern CSS techniques and animations.',
-    image: "https://img.rocket.new/generatedImages/rocket_gen_img_1d71c2a86-1775380590718.png",
+    image: 'https://img.rocket.new/generatedImages/rocket_gen_img_1d71c2a86-1775380590718.png',
     alt: 'Clean white browser interface showing Google search homepage in bright daylight setting',
     techs: [
-      { label: 'Ht', fullName: 'HTML5', color: '#E34F26', bg: '#FEF0EC', icon: '🌐' },
-      { label: 'Cs', fullName: 'CSS3', color: '#1572B6', bg: '#EBF4FB', icon: '🎨' },
-      { label: 'Js', fullName: 'JavaScript', color: '#F7DF1E', bg: '#FEFCE8', icon: 'JS' },
+      { label: 'Ht', fullName: 'HTML5', color: '#E34F26', bg: '#FEF0EC', iconImage: '/image-portfolio/html.png' },
+      { label: 'Js', fullName: 'JavaScript', color: '#F7DF1E', bg: '#FEFCE8', iconImage: '/image-portfolio/javascript.png' },
+      { label: 'C+', fullName: 'C++', color: '#00599C', bg: '#EBF2FB', iconImage: '/image-portfolio/cpp.png' },
     ],
   },
 ];
@@ -109,20 +109,23 @@ function TechIconWithHover({ tech }: { tech: TechIcon }) {
       }}
       title={tech.fullName}
     >
-      {/* Circle icon label — always visible */}
+      {/* Image badge — always visible */}
       <div
-        className="flex items-center justify-center shrink-0"
+        className="flex items-center justify-center shrink-0 overflow-hidden"
         style={{
           width: 26,
           height: 26,
           borderRadius: 999,
-          color: tech.color,
-          fontSize: '0.6rem',
-          fontWeight: 700,
           userSelect: 'none',
         }}
       >
-        {tech.label}
+        <AppImage
+          src={tech.iconImage}
+          alt={tech.fullName}
+          width={26}
+          height={26}
+          className="w-full h-full object-contain"
+        />
       </div>
 
       {/* Expanding text — slides in to the right */}
@@ -139,6 +142,7 @@ function TechIconWithHover({ tech }: { tech: TechIcon }) {
           fontSize: '0.7rem',
           fontWeight: 600,
           paddingRight: hovered ? 8 : 0,
+          paddingLeft: hovered ? 4 : 0,
           display: 'block',
         }}
       >
