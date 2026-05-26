@@ -10,6 +10,12 @@ export default function ContactSection() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (email.trim()) {
+      // Open the user's default email client pre-filled with my address.
+      // Including the sender's email in the body so I have it once they hit send.
+      const subject = encodeURIComponent('Portfolio Inquiry');
+      const body = encodeURIComponent(`Hi Izzi,\n\n\n\n— ${email}`);
+      window.location.href = `mailto:izzimrapersonal@gmail.com?subject=${subject}&body=${body}`;
+
       setSubmitted(true);
       setEmail('');
       setTimeout(() => setSubmitted(false), 3000);

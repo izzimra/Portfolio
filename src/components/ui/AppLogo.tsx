@@ -13,7 +13,7 @@ interface AppLogoProps {
 }
 
 const AppLogo = memo(function AppLogo({
-  src = '/assets/images/app_logo.png',
+  src = '/image-portfolio/profile.png',
   iconName = 'SparklesIcon',
   size = 64,
   className = '',
@@ -21,22 +21,26 @@ const AppLogo = memo(function AppLogo({
 }: AppLogoProps) {
   // Memoize className calculation
   const containerClassName = useMemo(() => {
-    const classes = ['flex items-center'];
+    const classes = ['flex items-center justify-center overflow-hidden rounded-full'];
     if (onClick) classes.push('cursor-pointer hover:opacity-80 transition-opacity');
     if (className) classes.push(className);
     return classes.join(' ');
   }, [onClick, className]);
 
   return (
-    <div className={containerClassName} onClick={onClick}>
+    <div
+      className={containerClassName}
+      onClick={onClick}
+      style={{ width: size, height: size }}
+    >
       {/* Show image if src provided, otherwise show icon */}
       {src ? (
         <AppImage
           src={src}
-          alt="Logo"
+          alt="Izzi Muhammad Rizky Azzahra"
           width={size}
           height={size}
-          className="flex-shrink-0"
+          className="w-full h-full object-cover"
           priority={true}
           unoptimized={src.endsWith('.svg')}
         />

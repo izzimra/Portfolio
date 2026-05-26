@@ -54,7 +54,7 @@ const projects: Project[] = [
     techs: [
       { label: 'TS', fullName: 'TypeScript', color: '#3178C6', bg: '#EBF2FB', iconImage: '/image-portfolio/ts.png' },
       { label: 'Nx', fullName: 'Next.js', color: '#000000', bg: '#F5F5F5', iconImage: '/image-portfolio/nextjs.png' },
-      { label: 'Ja', fullName: 'Java', color: '#E76F00', bg: '#FFF3E8', iconImage: '/image-portfolio/java.png' },
+      { label: 'Sb', fullName: 'Supabase', color: '#3ECF8E', bg: '#E8FBF1', iconImage: '/image-portfolio/supabase.png' },
     ],
   },
   {
@@ -66,7 +66,7 @@ const projects: Project[] = [
     techs: [
       { label: 'Ht', fullName: 'HTML5', color: '#E34F26', bg: '#FEF0EC', iconImage: '/image-portfolio/html.png' },
       { label: 'Js', fullName: 'JavaScript', color: '#F7DF1E', bg: '#FEFCE8', iconImage: '/image-portfolio/javascript.png' },
-      { label: 'C+', fullName: 'C++', color: '#00599C', bg: '#EBF2FB', iconImage: '/image-portfolio/cpp.png' },
+      { label: 'Cs', fullName: 'CSS3', color: '#1572B6', bg: '#EBF4FB', iconImage: '/image-portfolio/css.png' },
     ],
   },
 ];
