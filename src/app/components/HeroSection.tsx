@@ -6,41 +6,59 @@ import AppImage from '@/components/ui/AppImage';
 
 const polaroidImages = [
   {
-    src: "https://images.unsplash.com/photo-1645013937286-7f283262c61d",
-    alt: 'Mountain landscape with lush green forest and misty peaks under overcast sky',
-    label: 'Bandung',
-    rotate: -8,
-    x: -160,
-    y: 10,
-    zIndex: 1
-  },
-  {
-    src: "https://images.unsplash.com/photo-1720617782216-21db14005f0b",
-    alt: 'Vibrant city street at night with neon lights and rain-slicked pavement',
-    label: 'Kuala Lumpur',
-    rotate: -3,
-    x: -60,
-    y: -15,
-    zIndex: 2
-  },
-  {
-    src: "https://images.unsplash.com/photo-1621692359226-070bd08a954d",
-    alt: 'Tropical beach with turquoise water, white sand, and palm trees in bright sunlight',
-    label: 'Bali',
-    rotate: 4,
-    x: 50,
-    y: 5,
-    zIndex: 3
-  },
-  {
-    src: "https://img.rocket.new/generatedImages/rocket_gen_img_1613df677-1773636157940.png",
-    alt: 'Ancient temple ruins surrounded by jungle greenery in warm golden afternoon light',
-    label: 'Yogyakarta',
-    rotate: 10,
-    x: 155,
+    src: 'https://images.unsplash.com/photo-1485470733090-0aae1788d5af?w=400&q=80',
+    alt: 'Dimly lit moody portrait scene',
+    label: 'Fight Club',
+    rotate: -12,
+    x: -240,
     y: -10,
-    zIndex: 4
-  }
+    zIndex: 1,
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=400&q=80',
+    alt: 'Tropical island beach with turquoise water',
+    label: 'Mauritius',
+    rotate: -6,
+    x: -140,
+    y: 30,
+    zIndex: 2,
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400&q=80',
+    alt: 'Mountain landscape in New Zealand',
+    label: 'New Zealand',
+    rotate: -2,
+    x: -50,
+    y: 10,
+    zIndex: 3,
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=400&q=80',
+    alt: 'Canadian forest and lake scenery',
+    label: 'Canada',
+    rotate: 4,
+    x: 30,
+    y: -20,
+    zIndex: 5,
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=400&q=80',
+    alt: 'Norwegian fjord with steep mountains',
+    label: 'Norway',
+    rotate: 2,
+    x: 130,
+    y: 5,
+    zIndex: 4,
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=400&q=80',
+    alt: 'Japanese temple with cherry blossoms',
+    label: 'Japan',
+    rotate: 12,
+    x: 230,
+    y: 20,
+    zIndex: 1,
+  },
 ];
 
 const badgeTexts = ['Software Engineer', 'Creative Lead'];
@@ -98,7 +116,7 @@ function PolaroidCard({
   return (
     <motion.div
       className="polaroid-card"
-      style={{ rotate, x, y, zIndex, width: 110 }}
+      style={{ rotate, x, y, zIndex, width: 140 }}
       initial={{ opacity: 0, y: 40, rotate: rotate - 5 }}
       animate={{ opacity: 1, y, rotate }}
       transition={{
@@ -107,23 +125,26 @@ function PolaroidCard({
         ease: [0.16, 1, 0.3, 1],
       }}
       whileHover={{
-        y: y - 12,
-        rotate: rotate * 0.5,
-        zIndex: 10,
-        scale: 1.05,
+        y: y - 14,
+        rotate: rotate * 0.3,
+        zIndex: 50,
+        scale: 1.1,
         transition: { duration: 0.3 },
       }}
     >
-      <div className="w-full overflow-hidden" style={{ height: 80 }}>
+      <div className="w-full overflow-hidden" style={{ height: 100 }}>
         <AppImage
           src={src}
           alt={alt}
-          width={110}
-          height={80}
+          width={140}
+          height={100}
           className="w-full h-full object-cover"
         />
       </div>
-      <p className="text-center mt-1" style={{ fontSize: '0.6rem', color: '#666', fontWeight: 500 }}>
+      <p
+        className="text-center mt-1"
+        style={{ fontSize: '0.65rem', color: '#666', fontWeight: 500 }}
+      >
         {label}
       </p>
     </motion.div>
@@ -166,10 +187,10 @@ export default function HeroSection() {
         className="mb-4"
       >
         <span className="badge-outlined mb-6 inline-block">Travelling is in my blood</span>
-        <div className="relative w-full overflow-hidden" style={{ height: 180 }}>
+        <div className="relative w-full" style={{ height: 240 }}>
           <div
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-            style={{ width: 300 }}
+            style={{ width: 600, height: 200 }}
           >
             {polaroidImages.map((img, i) => (
               <PolaroidCard key={img.label} {...img} index={i} />
