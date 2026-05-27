@@ -179,15 +179,19 @@
 
   .polaroid-card {
     background: white;
-    padding: 0.5rem 0.5rem 2rem 0.5rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    padding: 0.625rem 0.625rem 2.25rem 0.625rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18), 0 2px 6px rgba(0, 0, 0, 0.08);
     border-radius: 2px;
     position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -70px;
+    margin-top: -60px;
   }
 
   .dark .polaroid-card {
     background: #2a2a2a;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.55), 0 2px 6px rgba(0, 0, 0, 0.35);
   }
 
   .experience-item {
