@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import HeroSection from '@/app/components/HeroSection';
+import GithubSection from '@/app/components/GithubSection';
 import ProjectsSection from '@/app/components/ProjectsSection';
 import ExperienceSection from '@/app/components/ExperienceSection';
 import AchievementsSection from '@/app/components/AchievementsSection';
@@ -38,6 +39,7 @@ export default function HomePage() {
         <div className="px-6 sm:px-8">
           <main>
             <HeroSection />
+            <GithubSection />
             <ProjectsSection />
             <ExperienceSection />
             <AchievementsSection />
