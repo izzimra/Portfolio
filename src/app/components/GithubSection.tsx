@@ -8,7 +8,7 @@ import GitHubCalendar from 'react-github-calendar';
 const calendarTheme = {
   light: ['#ECECEC', '#D4D4D4', '#A3A3A3', '#525252', '#171717'],
   dark: ['#1F1F1F', '#3A3A3A', '#6B6B6B', '#A3A3A3', '#F5F5F5'],
-} as const;
+};
 
 function useIsDark() {
   const [isDark, setIsDark] = useState(false);

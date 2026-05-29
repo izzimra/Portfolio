@@ -226,10 +226,12 @@
   }
 
   .send-btn {
-    background: var(--card);
+    display: inline-flex;
+    align-items: center;
+    background: #F3F4F6;
     border: 1px solid var(--border);
     border-radius: 0.5rem;
-    padding: 0.625rem 1.25rem;
+    padding: 0.75rem 1.25rem;
     font-size: 0.875rem;
     font-weight: 500;
     color: var(--foreground);
@@ -242,6 +244,14 @@
   .send-btn:hover {
     background: var(--secondary);
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  .dark .send-btn {
+    background: var(--secondary);
+  }
+
+  .dark .send-btn:hover {
+    background: var(--muted);
   }
 
   .github-cell {
