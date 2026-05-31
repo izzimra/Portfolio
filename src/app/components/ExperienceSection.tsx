@@ -6,8 +6,7 @@ import AppImage from '@/components/ui/AppImage';
 
 interface TechBadge {
   label: string;
-  color: string;
-  bg: string;
+  iconImage: string;
 }
 
 interface Experience {
@@ -28,9 +27,9 @@ const experiences: Experience[] = [
       'Lead the IT & Multimedia department, overseeing official website development, multimedia production pipelines, and a student-driven "Video Edit by Request" system.',
     logoImage: '/image-portfolio/ppi.png',
     techs: [
-      { label: 'Nx', color: '#000', bg: '#F5F5F5' },
-      { label: 'Ts', color: '#3178C6', bg: '#EBF2FB' },
-      { label: 'Pr', color: '#9999FF', bg: '#F0EFFF' },
+      { label: 'Next.js', iconImage: '/image-portfolio/nextjs.png' },
+      { label: 'TypeScript', iconImage: '/image-portfolio/ts.png' },
+      { label: 'Premiere Pro', iconImage: '/image-portfolio/premiere.png' },
     ],
   },
   {
@@ -41,9 +40,9 @@ const experiences: Experience[] = [
       'Delivered 160+ custom design projects, directed Esports content creation, and served as Project Manager for the "Mental Note" mental-health journaling app.',
     logoImage: '/image-portfolio/pine.png',
     techs: [
-      { label: 'Fi', color: '#F24E1E', bg: '#FEF0EC' },
-      { label: 'Ai', color: '#FF9A00', bg: '#FFF8EC' },
-      { label: 'Ps', color: '#31A8FF', bg: '#EBF7FF' },
+      { label: 'Figma', iconImage: '/image-portfolio/figma.png' },
+      { label: 'Illustrator', iconImage: '/image-portfolio/illustrator.png' },
+      { label: 'Photoshop', iconImage: '/image-portfolio/photoshop.png' },
     ],
   },
   {
@@ -54,9 +53,9 @@ const experiences: Experience[] = [
       'Mentored 40+ members in programming fundamentals, designed a biometric Heartbeat Detector, and developed an automated IoT Rain Detection System for campus use.',
     logoImage: '/image-portfolio/gcc.png',
     techs: [
-      { label: 'C+', color: '#00599C', bg: '#EBF4FB' },
-      { label: 'Py', color: '#3776AB', bg: '#EBF5FB' },
-      { label: 'Io', color: '#00979D', bg: '#E8F8F8' },
+      { label: 'C++', iconImage: '/image-portfolio/cpp.png' },
+      { label: 'Python', iconImage: '/image-portfolio/python.png' },
+      { label: 'IoT / Hardware', iconImage: '/image-portfolio/iot.png' },
     ],
   },
 ];
@@ -108,15 +107,20 @@ export default function ExperienceSection() {
                 <p className="text-xs text-muted-foreground leading-relaxed mb-2 max-w-lg">
                   {exp.description}
                 </p>
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-2">
                   {exp.techs.map((tech) => (
                     <div
                       key={tech.label}
-                      className="tech-icon-badge"
-                      style={{ background: tech.bg, color: tech.color, border: `1px solid ${tech.color}22` }}
+                      className="w-7 h-7 flex items-center justify-center"
                       title={tech.label}
                     >
-                      {tech.label}
+                      <AppImage
+                        src={tech.iconImage}
+                        alt={tech.label}
+                        width={28}
+                        height={28}
+                        className="w-7 h-7 object-contain"
+                      />
                     </div>
                   ))}
                 </div>
