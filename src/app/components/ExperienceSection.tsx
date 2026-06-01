@@ -109,17 +109,13 @@ export default function ExperienceSection() {
                 </p>
                 <div className="flex items-center gap-2">
                   {exp.techs.map((tech) => (
-                    <div
-                      key={tech.label}
-                      className="w-7 h-7 flex items-center justify-center"
-                      title={tech.label}
-                    >
+                    <div key={tech.label} className="tech-chip" title={tech.label}>
                       <AppImage
                         src={tech.iconImage}
                         alt={tech.label}
-                        width={28}
-                        height={28}
-                        className="w-7 h-7 object-contain"
+                        width={20}
+                        height={20}
+                        className="w-5 h-5 object-contain"
                       />
                     </div>
                   ))}

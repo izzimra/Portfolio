@@ -150,21 +150,35 @@
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
   }
 
-  .tech-icon-badge {
-    width: 1.5rem;
-    height: 1.5rem;
-    border-radius: 9999px;
+  .tech-chip {
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 0.5rem;
     border: 1px solid var(--border);
-    background: var(--muted);
+    background: var(--card);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.6rem;
-    font-weight: 700;
-    color: var(--muted-foreground);
     overflow: hidden;
     cursor: default;
     flex-shrink: 0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+
+  .tech-chip:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: var(--muted-foreground);
+  }
+
+  .dark .tech-chip {
+    background: var(--secondary);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .dark .tech-chip:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   }
 
   .timeline-dot {
