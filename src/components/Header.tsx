@@ -136,7 +136,7 @@ export default function Header() {
                   initial={{ x: '-100%', opacity: 0 }}
                   animate={{ x: '200%', opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5, ease: 'easeInOut' }}
+                  transition={{ duration: 1.2, ease: 'easeInOut' }}
                   style={{
                     background:
                       'linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.55) 50%, transparent 70%)',
